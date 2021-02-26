@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Modification d'une équipe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card align="center">
+    <ion-card-header>
+      <ion-card-title>Mise à jour</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="updateEquipe(form)">
+        <ion-item>
+          <ion-label>Id</ion-label>
+          <ion-input
+            name="id"
+            ngModel
+            type="number"
+            [value]="equipe.id"
+            disabled
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nom</ion-label>
+          <ion-input
+            name="name"
+            ngModel
+            type="text"
+            [value]="equipe.name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Pays</ion-label>
+          <ion-input
+            name="country"
+            ngModel
+            type="text"
+            [value]="equipe.country"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button type="submit" color="succes">Modifier</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

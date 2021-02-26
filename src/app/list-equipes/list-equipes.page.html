@@ -1,0 +1,93 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste des équipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-grid class="ion-margin">
+    <ion-row>
+      <ion-col>Id</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col>Country</ion-col>
+      <ion-col>Effectif</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let equipe of equipes;">
+      <ion-col>{{ equipe.id }}</ion-col>
+      <ion-col>{{ equipe.name }}</ion-col>
+      <ion-col>{{ equipe.country }}</ion-col>
+      <ion-col
+        ><ion-button color="primary" (click)="afficherJoueurs(equipe.id)">
+          afficher
+        </ion-button></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+</ion-content>-->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Liste des équipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-card
+    *ngFor="let equipe of equipes"
+    routerDirection="root"
+    [routerLink]="['equipes', equipe.id, 'joueurs']"
+    routerLinkActive="selected"
+  >
+    <ion-card-header
+      style="
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <ion-card-subtitle>{{ equipe.nom }}</ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>{{equipe.id}} - {{equipe.name}} </ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-button
+              color="warning"
+              routerDirection="root"
+              [routerLink]="[equipe.id,'update-equipe']"
+              routerLinkActive="selected"
+              item-right
+              clear
+              ><ion-icon name="create" slot="start"></ion-icon>
+            </ion-button>
+            <ion-button
+              color="danger"
+              (click)="deleteEquipe($event, equipe.id)"
+              item-right
+              clear
+              ><ion-icon name="trash" slot="start"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-button
+    color="success"
+    routerDirection="root"
+    [routerLink]="['add']"
+    routerLinkActive="selected"
+    expand="full"
+    block
+    ><ion-icon name="add" slot="start"></ion-icon> Ajouter</ion-button
+  >
+</ion-content>

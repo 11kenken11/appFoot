@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ joueur.nom }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-card>
+    <ion-card-header
+      style="
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+    <ion-row>
+      <img
+        alt="photo du joueur"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSStrG8SDIpDbwPxtbUnB3zTtBW5V91fd2uWQ&usqp=CAU"
+        width="600px"
+      />
+    </ion-row>
+
+    <ion-item>
+      <ion-label>Numéro : {{joueur.numero}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Poste : {{ joueur.poste }}</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

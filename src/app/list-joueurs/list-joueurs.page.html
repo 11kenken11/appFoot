@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Effectif : </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-button
+    color="success"
+    routerDirection="root"
+    [routerLink]="['add']"
+    routerLinkActive="selected"
+    expand="full"
+    block
+    ><ion-icon name="add" slot="start"></ion-icon> Ajouter</ion-button
+  >
+
+  <ion-card *ngFor="let joueur of joueurs" (click)="showJoueur(joueur)">
+    <ion-card-header
+      style="
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <ion-card-subtitle>{{ joueur.nom }}</ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col col-4>
+        <img
+          alt="photo du joueur"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSStrG8SDIpDbwPxtbUnB3zTtBW5V91fd2uWQ&usqp=CAU"
+          width="150px"
+        />
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+
+    <ion-card-content>
+      <ion-row>
+        <ion-label
+          >Numéro : {{joueur.numero}} - Poste : {{ joueur.poste }}</ion-label
+        >
+      </ion-row>
+      <ion-row>
+        <ion-col
+          ><ion-button
+            color="warning"
+            (click)="onUpdateJoueur($event, joueur.id)"
+            clear
+            ><ion-icon name="create"></ion-icon> </ion-button
+        ></ion-col>
+        <ion-col
+          ><ion-button
+            color="danger"
+            (click)="deleteJoueur($event, joueur.id)"
+            clear
+            ><ion-icon name="trash"></ion-icon> </ion-button
+        ></ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Modification d'un joueur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card align="center">
+    <ion-card-header>
+      <img src="assets/ballon.jpg" alt="ballon" />
+
+      <ion-card-title>Mise à jour</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="updateJoueur(form)">
+        <ion-item>
+          <ion-label>Id</ion-label>
+          <ion-input
+            name="id"
+            [(ngModel)]="joueur.id"
+            type="number"
+            placeholder="Enter Id"
+            [value]="joueur.id"
+            readOnly
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Equipe</ion-label>
+
+          <ion-select
+            okText="Okay"
+            cancelText="Dismiss"
+            placeholder="Select One"
+            [(ngModel)]="joueur.idEquipe"
+            name="idEquipe"
+            [value]="joueur.idEquipe"
+          >
+            <ion-select-option
+              *ngFor="let equipe of equipes"
+              [value]="equipe.id"
+              >{{ equipe.name }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nom</ion-label>
+          <ion-input
+            name="nom"
+            [(ngModel)]="joueur.nom"
+            type="text"
+            placeholder="Enter Name"
+            [value]="joueur.nom"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Numéro</ion-label>
+          <ion-input
+            name="numero"
+            [(ngModel)]="joueur.numero"
+            type="number"
+            placeholder="Enter Player's Number"
+            [value]="joueur.numero"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Poste</ion-label>
+          <ion-input
+            name="poste"
+            [(ngModel)]="joueur.poste"
+            type="text"
+            placeholder="Enter Poste"
+            [value]="joueur.poste"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button type="submit" color="primary">Modifier</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
